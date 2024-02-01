@@ -2,6 +2,7 @@ package com.smsoft.flow.controller;
 
 import com.smsoft.flow.dto.AllowUserResponse;
 import com.smsoft.flow.dto.AllowedUserResponse;
+import com.smsoft.flow.dto.RankNumberResponse;
 import com.smsoft.flow.dto.RegisterUserResponse;
 import com.smsoft.flow.service.UserQueueService;
 import lombok.RequiredArgsConstructor;
@@ -39,5 +40,14 @@ public class UserQueueController {
     ) {
         return userQueueService.isAllowed(queue, userId)
                 .map(AllowedUserResponse::new);
+    }
+
+    @GetMapping("/rank")
+    public Mono<RankNumberResponse> getUserRank(
+            @RequestParam(name = "queue", defaultValue = "default") String queue,
+            @RequestParam(name = "user_id") Long userId
+    ) {
+        return userQueueService.getRank(queue, userId)
+                .map(RankNumberResponse::new);
     }
 }
