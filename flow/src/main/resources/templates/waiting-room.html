@@ -43,7 +43,7 @@
         fetch('/api/v1/queue/rank?' + queryParam)
             .then(response => response.json())
             .then(data => {
-                if(data.Rank < 0) {
+                if(data.rank < 0) {
                     document.querySelector('#number').innerHTML = 0;
                     document.querySelector('#updated').innerHTML = new Date();
 
@@ -51,7 +51,7 @@
                     window.location.href = newUrl;
                     return;
                 }
-                document.querySelector('#number').innerHTML = data.Rank;
+                document.querySelector('#number').innerHTML = data.rank;
                 document.querySelector('#updated').innerHTML = new Date();
             })
             .catch(error => console.error(error));
