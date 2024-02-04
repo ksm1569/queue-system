@@ -23,7 +23,7 @@ public class WaitingRoomController {
                                     ServerWebExchange exchange
     ) {
         var key = "user-queue-%s-token".formatted(queue);
-        var cookieValue = exchange.getResponse().getCookies().getFirst(key);
+        var cookieValue = exchange.getRequest().getCookies().getFirst(key);
         var token = (cookieValue == null) ? "" : cookieValue.getValue();
 
         // 1. 입장이 허용되는가

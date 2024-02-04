@@ -104,7 +104,7 @@ public class UserQueueService {
 
         log.info("called scheduling...");
 
-        var maxAllowUserCount = 3L;
+        var maxAllowUserCount = 100L;
 
         reactiveRedisTemplate.scan(ScanOptions.scanOptions()
                 .match(USER_QUEUE_WAIT_KEY_FOR_SCAN)
